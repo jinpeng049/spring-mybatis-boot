@@ -1,4 +1,4 @@
-﻿USE `test`;
+﻿USE `rap_db`;
 
 DROP TABLE IF EXISTS `country`;
 CREATE TABLE `country` (

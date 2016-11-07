@@ -2,6 +2,7 @@ package tk.mybatis.springboot;
 
 import org.junit.runner.RunWith;
 import org.springframework.boot.test.SpringApplicationConfiguration;
+import org.springframework.test.context.junit4.AbstractTransactionalJUnit4SpringContextTests;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.web.WebAppConfiguration;
 import org.springframework.transaction.annotation.Transactional;
@@ -13,5 +14,5 @@ import org.springframework.transaction.annotation.Transactional;
 @WebAppConfiguration
 @Transactional
 @SpringApplicationConfiguration(Application.class)
-public class BaseTest {
+public abstract class BaseTest extends AbstractTransactionalJUnit4SpringContextTests {
 }
