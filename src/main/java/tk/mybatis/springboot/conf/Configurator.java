@@ -29,6 +29,7 @@ import org.apache.ibatis.plugin.Interceptor;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionFactoryBean;
 import org.mybatis.spring.SqlSessionTemplate;
+import org.mybatis.spring.annotation.MapperScan;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -41,8 +42,8 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.PlatformTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 import org.springframework.transaction.annotation.TransactionManagementConfigurer;
-import tk.mybatis.mapper.common.Mapper;
 import tk.mybatis.mapper.mapperhelper.MapperHelper;
+import tk.mybatis.springboot.util.MyMapper;
 
 import javax.sql.DataSource;
 import java.util.Properties;
@@ -56,6 +57,7 @@ import java.util.Properties;
 @Configuration
 @EnableTransactionManagement
 @PropertySource(ignoreResourceNotFound = true, value = {"classpath:/config/email.properties", "classpath:/config/email.yml"}, name = "email")
+@MapperScan({"tk.mybatis.springboot.dao", "tk.mybatis.springboot.mapper"})
 public class Configurator implements TransactionManagementConfigurer {
 
     private static final Logger LOG = LoggerFactory.getLogger(Configurator.class);
@@ -91,18 +93,16 @@ public class Configurator implements TransactionManagementConfigurer {
 //        }
 //    }
 
-    @Bean
-    public MapperHelper mapperHelper() {
-        MapperHelper mapperHelper = new MapperHelper();
-        Properties properties = new Properties();
-        properties.setProperty("ORDER", "AFTER");
-        mapperHelper.setProperties(properties);
-//        tk.mybatis.mapper.entity.Config config = new tk.mybatis.mapper.entity.Config();
-//        mapperHelper.setConfig(config);
-        mapperHelper.registerMapper(Mapper.class);
-        mapperHelper.processConfiguration(sqlSessionFactory.getConfiguration());
-        return mapperHelper;
-    }
+//    @Bean
+//    public MapperHelper mapperHelper() {
+//        MapperHelper mapperHelper = new MapperHelper();
+//        Properties properties = new Properties();
+//        properties.setProperty("ORDER", "AFTER");
+//        mapperHelper.setProperties(properties);
+//        mapperHelper.registerMapper(MyMapper.class);
+//        mapperHelper.processConfiguration(sqlSessionFactory.getConfiguration());
+//        return mapperHelper;
+//    }
 
     @Bean
     public SqlSessionFactory sqlSessionFactory() {
@@ -128,35 +128,6 @@ public class Configurator implements TransactionManagementConfigurer {
             return null;
         }
     }
-
-//    @Bean(name = "sqlSessionFactory")
-//    public SqlSessionFactory sqlSessionFactoryBean() {
-//        SqlSessionFactoryBean bean = new SqlSessionFactoryBean();
-//        bean.setDataSource(dataSource);
-//        bean.setTypeAliasesPackage("tk.mybatis.springboot.model");
-//
-//        //分页插件
-//        PageHelper pageHelper = new PageHelper();
-//        Properties properties = new Properties();
-//        properties.setProperty("reasonable", "true");
-//        properties.setProperty("supportMethodsArguments", "true");
-//        properties.setProperty("returnPageInfo", "check");
-//        properties.setProperty("params", "count=countSql");
-//        pageHelper.setProperties(properties);
-//
-//        //添加插件
-//        bean.setPlugins(new Interceptor[]{pageHelper});
-//
-//        //添加XML目录
-//        ResourcePatternResolver resolver = new PathMatchingResourcePatternResolver();
-//        try {
-//            bean.setMapperLocations(resolver.getResources("classpath:mapper/*.xml"));
-//            return bean.getObject();
-//        } catch (Exception e) {
-//            e.printStackTrace();
-//            throw new RuntimeException(e);
-//        }
-//    }
 
     @Bean
     public SqlSessionTemplate sqlSessionTemplate(SqlSessionFactory sqlSessionFactory) {

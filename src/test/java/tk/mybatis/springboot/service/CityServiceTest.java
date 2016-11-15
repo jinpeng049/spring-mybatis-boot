@@ -23,11 +23,6 @@ public class CityServiceTest extends BaseTest {
     }
 
     @Test
-    public void getById() {
-
-    }
-
-    @Test
     public void deleteById() {
 
     }

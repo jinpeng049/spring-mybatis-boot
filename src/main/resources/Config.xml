@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+
+	<settings>
+		<setting name="lazyLoadingEnabled" value="true"/>
+		<setting name="aggressiveLazyLoading" value="false"/>
+	</settings>
+
+    <!--<typeAliases>-->
+        <!--<package name="com.yixiang.np.model.po"/>-->
+        <!--<package name="com.yixiang.np.model.vo"/>-->
+    <!--</typeAliases>-->
+
+    <plugins>
+        <plugin interceptor="com.github.pagehelper.PageHelper">
+            <property name="dialect" value="mysql"/>
+        </plugin>
+    </plugins>
+
+    <mappers>
+        <!--<mapper resource="mybatis/mapper/DictionaryMapper.xml"/>-->
+        <!--<mapper resource="mybatis/mapper/DictionarytypeMapper.xml"/>-->
+        <!--<mapper resource="mybatis/mapper/OrganizationMapper.xml"/>-->
+        <!--<mapper resource="mybatis/mapper/ResourceMapper.xml"/>-->
+        <!--<mapper resource="mybatis/mapper/RoleMapper.xml"/>-->
+        <!--<mapper resource="mybatis/mapper/UserMapper.xml"/>-->
+        <!--<mapper resource="mybatis/mapper/AirportInfoMapper.xml"/>-->
+        <!--<mapper resource="mybatis/mapper/CustomerMapper.xml"/>-->
+        <!--<mapper resource="mybatis/mapper/1OrderMapper.xml"/>-->
+        <!--<mapper resource="mybatis/mapper/StatementMapper.xml"/>-->
+        <!--<mapper resource="mybatis/mapper/NpOrderMapper.xml"/>-->
+        <!--<mapper resource="mybatis/mapper/CompanyMapper.xml"/>-->
+        <!--<mapper resource="mybatis/mapper/LogMapper.xml"/>-->
+        <!--平台订单航班表-->
+        <!--<mapper resource="mybatis/mapper/PltmOrderFlightMapper.xml"/>-->
+        <!--平台订单表-->
+        <!--<mapper resource="mybatis/mapper/PltmOrderMapper.xml"/>-->
+         <!--平台订单日志表-->
+        <!--<mapper resource="mybatis/mapper/PltmOrderLogMapper.xml"/>-->
+        <!--平台订单乘机人表-->
+        <!--<mapper resource="mybatis/mapper/PltmOrderPassengerMapper.xml"/>-->
+        <!--平台收款结算表-->
+        <!--<mapper resource="mybatis/mapper/PltmPaymentMapper.xml"/>-->
+        <!--平台收款结算订单关系表-->
+        <!--<mapper resource="mybatis/mapper/PltmPaymentOrderMapper.xml"/>-->
+        <!--账户表-->
+        <!--<mapper resource="mybatis/mapper/PltmAccountMapper.xml"/>-->
+        <!--付款记录表-->
+        <!--<mapper resource="mybatis/mapper/PltmTradeDetailMapper.xml"/>-->
+        <!--平台出票列表查询-->
+        <!--<mapper resource="mybatis/mapper/TicketManageMapper.xml"/>-->
+
+        <!--<mapper resource="mybatis/mapper/WithdrawalMapper.xml"/>-->
+        <!-- 交易记录 -->
+        <!--<mapper resource="mybatis/mapper/PltmTradeListMapper.xml"/>-->
+        <!-- 合同订单 -->
+        <!--<mapper resource="mybatis/mapper/1PltmContractMapper.xml"/>-->
+        <!-- 订单查询修改 -->
+        <!--<mapper resource="mybatis/mapper/NewOrderMapper.xml"/>-->
+        <!-- 佣金账期 -->
+        <!--<mapper resource="mybatis/mapper/ChargesAndCreditMapper.xml"/>-->
+
+        <mapper resource="mapper/CountryMapper.xml"/>
+        <mapper resource="mapper/CityMapper.xml"/>
+    </mappers>
+</configuration>
